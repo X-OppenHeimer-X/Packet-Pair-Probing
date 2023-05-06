@@ -22,12 +22,13 @@ if c.FIXED_BANDWIDTH == True and c.FIXED_PACKET_SIZE == False:
     while True and trial_number < trials:    
         packet_1, client_address = server_socket.recvfrom(1024)
         packet1_receiving_time = time.time()
-        print(f"Packet 1 for trial number #{trial_number} received")
+        packet1_receiving_time = packet1_receiving_time + (c.sizes[trial_number]/c.bandwidth)
+        print(f"Packet 1 for trial number #{trial_number+1} received")
         packet_2, client_address = server_socket.recvfrom(1024)
         packet2_receiving_time = time.time()
-        print(f"Packet 2 for trial number #{trial_number} received")
-        packet_i = c.sizes[trial_number] 
-        final_dispersions_list_fixed_bandwidth.append(max((packet_i/(bandwidth*1000000)),(initial_dispersion_fb))) 
+        packet2_receiving_time = packet2_receiving_time + (c.sizes[trial_number]/c.bandwidth)
+        print(f"Packet 2 for trial number #{trial_number+1} received")
+        final_dispersions_list_fixed_bandwidth.append(packet2_receiving_time - packet1_receiving_time) 
         trial_number+=1
         
 

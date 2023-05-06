@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from mininet.net import Mininet
 from mininet.node import Controller, RemoteController, OVSController
 from mininet.node import CPULimitedHost, Host, Node
@@ -10,10 +8,18 @@ from mininet.log import setLogLevel, info
 from mininet.link import TCLink, Intf
 from subprocess import call
 from mininet.term import makeTerm
-
 from mininet.util import dumpNodeConnections
+import subprocess
+from config import bandwidth,FIXED_BANDWIDTH,FIXED_PACKET_SIZE,CROSS_TRAFFIC
+import sys
 
-bandwidth = 5
+def configs_okay(a,b):
+    if(bool(a)!=bool(b)):
+        print("Configurations okay. Setting up network.")
+        return True
+    else:
+        print("The configurations are not set properly.Please check the config.py file.")
+        sys.exit()
 
 def myNetwork(bandwidth):
     net = Mininet( topo=None,
@@ -52,11 +58,10 @@ def myNetwork(bandwidth):
 
     h1_term = makeTerm(h1,title = "client")
     h2_term = makeTerm(h2,title = "server")
-    h3_term = makeTerm(h3,title = "iperf client")
-    h4_term = makeTerm(h4,title = "iperf server")
+    if CROSS_TRAFFIC ==True:
+        h3_term = makeTerm(h3,title = "iperf client")
+        h4_term = makeTerm(h4,title = "iperf server")
     
-    info( '* Post configure switches and hosts\n')
-
     
     CLI(net)
     net.stop()
@@ -64,7 +69,9 @@ def myNetwork(bandwidth):
 
 if __name__ == '__main__':
     setLogLevel( 'info' )
-    myNetwork(bandwidth)
+    if configs_okay(FIXED_BANDWIDTH, FIXED_PACKET_SIZE):
+        myNetwork(bandwidth)
+
 
 
 

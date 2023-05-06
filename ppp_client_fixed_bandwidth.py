@@ -6,6 +6,7 @@ import os
 import time
 import pickle as pkl
 import config as c
+import struct
 from config import initial_dispersion_list_fixed_bandwidth,initial_dispersion_fb
     
 # create a socket object
@@ -18,8 +19,9 @@ server_address = ('192.168.1.2', 12346)
 
 # send a message to the server
 
-packet1 = b'x\00'  ##byte packets
-packet2 = b'x\01'
+packet1 = struct.pack('b', 0)   ##creates packets of one byte each
+  ##byte packets
+packet2 = struct.pack('b', 1)
 
 ##created a tuple of pair of packets 
 
@@ -32,16 +34,17 @@ if c.CROSS_TRAFFIC == True:
 
         pkt1 = pair[0]
         pkt2 = pair[1]
-
-        start_time_pkt1 = time.time()
+        time.sleep(2)
         client_socket.sendto(pkt1, server_address)
-        start_time_pkt2 = time.time()
+        start_time_pkt1 = time.time()
+
         client_socket.sendto(pkt2, server_address)
+        start_time_pkt2 = time.time()
 
         initial_dispersion = abs(start_time_pkt1 - start_time_pkt2)
         initial_dispersion_list_fixed_bandwidth.append(initial_dispersion)
-        initial_dispersion_fb = initial_dispersion
-        time.sleep(2)
+        # initial_dispersion_fb = initial_dispersion
+        # time.sleep(2)
         print(f'(CT == FALSE) Initial Dispersion for packet-size {c.sizes[list_of_packet_pairs.index(pair)]} : {initial_dispersion}')
 
 

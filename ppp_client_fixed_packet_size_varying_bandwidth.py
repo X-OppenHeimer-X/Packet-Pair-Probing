@@ -7,6 +7,7 @@ import time
 import config as c
 from config import initial_dispersion_list_fixed_packet_size
 import pickle as pkl
+import struct
 
 
 pickle_file = "initial_dispersions_fixed_ps.pkl"
@@ -33,9 +34,9 @@ server_address = ('192.168.1.2', 12346)
 
 # send a message to the server
 
-packet1 = b'x\00'
-packet2 = b'x\01'
+packet1 = struct.pack('b', 0)   ##creates packets of one byte each
 
+packet2 = struct.pack('b', 1)
 
 start_time_p1 = time.time()
 client_socket.sendto(packet1, server_address)

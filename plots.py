@@ -5,6 +5,7 @@ import pickle as pkl
 import sys
 import datetime
 from config import bandwidths,packet_size
+L_By_C_value = [x/(c.bandwidth*1000000) for x in c.sizes]
 
 now = datetime.datetime.now()
 timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -17,10 +18,12 @@ if c.FIXED_BANDWIDTH == True:
     with open("final_dispersion_fixed_bw.pkl","rb") as f:
         dispersion_list_final = pkl.load(f)
 
+
     if c.CROSS_TRAFFIC == False:
         fig, ax = plt.subplots()
         ax.scatter(c.sizes, dispersion_list_initial, label='Dispersion_in')
         ax.scatter(c.sizes, dispersion_list_final,label='Dispersion_out')
+        ax.scatter(c.sizes,L_By_C_value,label = 'L/C')
         ax.set_title(f'Initial and Final Dispersion for bandwidth: {c.bandwidth}')
         ax.set_xlabel('Packet Size')
         ax.set_ylabel('Dispersion')
@@ -32,6 +35,7 @@ if c.FIXED_BANDWIDTH == True:
         fig, ax = plt.subplots()
         ax.scatter(c.sizes, dispersion_list_initial, label='Dispersion_in')
         ax.scatter(c.sizes, dispersion_list_final,label='Dispersion_out')
+        ax.scatter(c.sizes,L_By_C_value,label = 'L/C')
         ax.set_title(f'Initial and Final Dispersion for bandwidth {c.bandwidth}')
         ax.set_xlabel('Packet Size')
         ax.set_ylabel('Dispersion')
@@ -51,6 +55,8 @@ else:
         fig, ax = plt.subplots()
         ax.scatter(c.bandwidths, dispersion_list_initial, label='Dispersion_in')
         ax.scatter(c.bandwidths, dispersion_list_final,label='Dispersion_out')
+        ax.scatter(c.bandwidths,L_By_C_value,label = 'L/C')
+
         ax.set_title(f'Initial and Final Dispersion for packet size')
         ax.set_xlabel('Bandwidth')
         ax.set_ylabel('Dispersion')
@@ -60,6 +66,8 @@ else:
         fig, ax = plt.subplots()
         ax.scatter(c.bandwidths, dispersion_list_initial, label='Dispersion_in')
         ax.scatter(c.bandwidths, dispersion_list_final,label='Dispersion_out')
+        ax.scatter(c.bandwidths,L_By_C_value,label = 'L/C')
+
         ax.set_title(f'Initial and Final Dispersion for packet size')
         ax.set_xlabel('Bandwidth')
         ax.set_ylabel('Dispersion')
