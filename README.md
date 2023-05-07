@@ -10,7 +10,7 @@ This repository contains the code for the final project for CS553: Design of Int
 - Jodh Singh
 
 
-This Readme file carries the step-by-step instructions to recreate our project.
+This Readme file carries the step-by-step instructions to recreate the experiments in our project.
 
 
 ## Requirements
