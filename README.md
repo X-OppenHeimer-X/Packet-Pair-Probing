@@ -14,9 +14,12 @@ This Readme file carries the step-by-step instructions to recreate our project.
 
 
 ## Requirements
-1. Ubuntu 22.04/20.04 (preferably 22.04)
+1. Ubuntu(PC or Virtual Machine) 22.04/20.04 (preferably 22.04)
 2. Mininet (Learn to install mininet on your system [here](https://www.youtube.com/watch?v=ZUzHKDIUFh4))
-3. Python 3.8 or above
+3. Python 3.10 or above
+4. Numpy (version 1.21.5)
+5. Matplotlib(version 3.5.1)
+
 
 
 
