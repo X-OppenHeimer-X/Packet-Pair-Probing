@@ -29,7 +29,7 @@ if c.FIXED_BANDWIDTH == True:
         ax.set_xlabel('Packet Size')
         ax.set_ylabel('Dispersion')
         ax.legend()
-        plt.savefig(f'./plot_directory/fixed_bandwidth_size/no_cross_traffic/dispersion_{c.bandwidth}_mbit_sec_{timestamp}.jpg')
+        plt.savefig(f'./plot_directory/fixed_bandwidth_size/no_cross_traffic/dispersion_{c.bandwidth}_mbit_sec_{timestamp}.png')
                
 
     else:
@@ -41,7 +41,7 @@ if c.FIXED_BANDWIDTH == True:
         ax.set_xlabel('Packet Size')
         ax.set_ylabel('Dispersion')
         ax.legend()
-        plt.savefig(f'./plot_directory/fixed_bandwidth_size/with_cross_traffic/CT_dispersion_{c.bandwidth}_mbit_sec_{timestamp}.jpg')
+        plt.savefig(f'./plot_directory/fixed_bandwidth_size/with_cross_traffic/CT_dispersion_{c.bandwidth}_mbit_sec_{timestamp}.png')
 
 else:
     with open("initial_dispersions_fixed_ps.pkl","rb") as f:
@@ -63,7 +63,7 @@ else:
         ax.set_xlabel('Bandwidth')
         ax.set_ylabel('Dispersion')
         ax.legend()
-        plt.savefig(f'./plot_directory/fixed_packet_size/no_cross_traffic/dispersion_{packet_size}_bytes_{timestamp}.jpg')
+        plt.savefig(f'./plot_directory/fixed_packet_size/no_cross_traffic/dispersion_{packet_size}_bytes_{timestamp}.png')
     else:
         fig, ax = plt.subplots()
         ax.scatter(c.bandwidths, dispersion_list_initial, label='Dispersion_in')
@@ -74,7 +74,7 @@ else:
         ax.set_xlabel('Bandwidth')
         ax.set_ylabel('Dispersion')
         ax.legend()
-        plt.savefig(f'./plot_directory/fixed_packet_size/with_cross_traffic/dispersion_{packet_size}_bytes_{timestamp}.jpg')
+        plt.savefig(f'./plot_directory/fixed_packet_size/with_cross_traffic/dispersion_{packet_size}_bytes_{timestamp}.png')
 
 
 
