@@ -5,7 +5,6 @@ import pickle as pkl
 import sys
 import datetime
 from config import bandwidths,packet_size
-L_By_C_value = [x/(c.bandwidth*1000000) for x in c.sizes]
 
 now = datetime.datetime.now()
 timestamp = now.strftime("%Y-%m-%d_%H-%M-%S")
@@ -17,6 +16,8 @@ if c.FIXED_BANDWIDTH == True:
 
     with open("final_dispersion_fixed_bw.pkl","rb") as f:
         dispersion_list_final = pkl.load(f)
+
+    L_By_C_value = [x/(c.bandwidth*1000000) for x in c.sizes]
 
 
     if c.CROSS_TRAFFIC == False:
@@ -49,6 +50,7 @@ else:
     with open("final_dispersion_fixed_ps.pkl","rb") as f:
         dispersion_list_final = pkl.load(f)
 
+    L_By_C_value = [packet_size/(bw*1000000) for bw in c.bandwidths]
 
     if c.CROSS_TRAFFIC == False:
         
