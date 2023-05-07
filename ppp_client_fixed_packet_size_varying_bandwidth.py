@@ -19,9 +19,6 @@ else:
     with open(pickle_file, "wb") as f:
         pkl.dump(initial_dispersion_list_fixed_packet_size, f)
 
-
-## The list of varying
-
 # create a socket object
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
