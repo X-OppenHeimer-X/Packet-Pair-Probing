@@ -20,7 +20,6 @@ This Readme file carries the step-by-step instructions to recreate our project.
 
 
 
----
 
 ## Constant Bandwidth Experiments
 
@@ -71,6 +70,8 @@ Once the plots are generated, feel free to delete the pickle files.
 > **Warning**
 > 
 > To reinitiate this experiment, delete the pickle files for veritable results
+
+---
 
 ### ii. With Cross Traffic
 
@@ -138,6 +139,9 @@ Once the plots are generated, feel free to delete the pickle files.
 > 
 > To reinitiate this experiment, delete the pickle files for veritable results
 
+---
+
+
 ## Constant Packet-size Experiments
 
 ### i. Without Cross Traffic
@@ -188,6 +192,9 @@ Once the plots are generated, feel free to delete the pickle files.
 > **Warning**
 > 
 > To reinitiate this experiment, delete the pickle files for veritable results
+
+---
+
 
 ### ii. With Cross Traffic
 
