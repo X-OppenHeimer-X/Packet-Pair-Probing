@@ -13,6 +13,7 @@ import subprocess
 from config import bandwidth,FIXED_BANDWIDTH,FIXED_PACKET_SIZE,CROSS_TRAFFIC
 import sys
 
+##Making sure the configurations in the config.py file are correct.
 def configs_okay(a,b):
     if(bool(a)!=bool(b)):
         print("Configurations okay. Setting up network.")

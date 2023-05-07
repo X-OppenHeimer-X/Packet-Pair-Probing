@@ -15,11 +15,10 @@ if c.FIXED_BANDWIDTH == True and c.FIXED_PACKET_SIZE == False:
 
 
     print('Server listening on port 5500...')
-    # while True:
-    #     # receive data from client
+   
     trials = len(c.sizes)
     trial_number = 0
-    while True and trial_number < trials:    
+    while True and trial_number < trials:  ##loop ends after all trials are completed.  
         packet_1, client_address = server_socket.recvfrom(1024)
         packet1_receiving_time = time.time()
         packet1_receiving_time = packet1_receiving_time + (c.sizes[trial_number]/c.bandwidth)
@@ -52,11 +51,10 @@ elif c.FIXED_BANDWIDTH == False and c.FIXED_PACKET_SIZE == True:
     server_socket.bind(('192.168.1.2', 12346))
 
 
-    print('Server listening on port 5500...')
-    # while True:
-    #     # receive data from client
+    print('Server listening on port 12346...')
+   
     trial_number = 0
-    while True and trial_number<1:    
+    while True and trial_number<1:   ### Loop ends after one packet is received. 
         packet_1, client_address = server_socket.recvfrom(1024)
         packet1_receiving_time = time.time()
         print(f"Packet 1 for trial number #{trial_number+1} for bandwidth {bandwidth}Mbits/sec received")

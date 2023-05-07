@@ -28,7 +28,6 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 
-# server_address = ('localhost', 5000)
 server_address = ('192.168.1.2', 12346)
 
 

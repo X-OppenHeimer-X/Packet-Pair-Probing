@@ -43,8 +43,7 @@ if c.CROSS_TRAFFIC == True:
 
         initial_dispersion = abs(start_time_pkt1 - start_time_pkt2)
         initial_dispersion_list_fixed_bandwidth.append(initial_dispersion)
-        # initial_dispersion_fb = initial_dispersion
-        # time.sleep(2)
+
         print(f'(CT == FALSE) Initial Dispersion for packet-size {c.sizes[list_of_packet_pairs.index(pair)]} : {initial_dispersion}')
 
 
